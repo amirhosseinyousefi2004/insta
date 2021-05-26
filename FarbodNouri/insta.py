@@ -1,11 +1,14 @@
 from PIL import Image
 import requests
 from io import BytesIO
+
+GID = 0
+
 class Account:
     def __init__(self,username,password):
         self.username = str(username)
         self.password = str(password)
-        #TODO: generate an id
+        self.ID = f"{GID:0>8d}"
 
     def login(self):
         pass
@@ -21,6 +24,12 @@ class User(Account):
     def add_post(self, url):
         post = Post(url,self.username)
         self.posts.append(post)
+
+    def delete_post(self, url):
+        for i in posts:
+            if url==i.url :
+                posts.remove(i)
+                break
 
 
 class Post:
